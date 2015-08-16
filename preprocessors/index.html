@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Title block allowing child pages to override -->
+        <title>Preprocessors : Mixture Documentation</title>
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+        <!-- Styles -->
+        <link href="/public/styles/app.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <!--[if lt IE 9]>
+            <link href="/public/styles/ie.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <![endif]-->
+        <!-- Necessary head scripts -->
+        <script src="/public/scripts/modernizr.2.6.2.min.js"></script>
+        <!-- Analytics Mixture Documentation -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35293218-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="container">
+                <header id="header">
+                    <!-- Include navigation -->
+                    <nav>
+	<ol>
+		<li class="ident"><a href="/" title="Home">Mixture</a></li>
+		<li><a href="/templates" title="Templates" >Templates</a></li>
+		<li><a href="/models" title="Models" >Models</a></li>
+		<li><a href="/preprocessors" title="Preprocessors" class="selected">Preprocessors</a></li>
+		<li><a href="/optimisation-debug" title="Optimise" >Optimise</a></li>
+		<li><a href="/mixture" title="Mixture" >Mixture</a></li>
+		<li><a href="/services" title="Services" >Services</a></li>
+		<li><a href="/simple" title="Simple Mode" >Simple Mode</a></li>
+		<li><a href="/collections" title="Collections" >Collections</a></li>
+	</ol>
+</nav>
+                    <!-- Header block child page -->
+                    
+	<h1>Preprocessors</h1>
+	<h2>Automatic compilation of Sass, Less, Stylus, CoffeeScript and More.</h2>
+
+                </header>
+                <!-- Content block child page -->
+                <div id="content">
+                    
+	<nav id="sidenav">
+		<ol>
+			<li class="selected"><a href="#intro">Introduction</a></li>
+			<li><a href="#locations">Locations</a></li>
+			<li><a href="#assets">Stylesheet Assets</a></li>
+			<li><a href="#sass">Sass (ruby)</a></li>
+			<li><a href="#libsass">Sass (libsass)</a></li>
+			<li><a href="#compass">Compass + Sass</a></li>
+			<li><a href="#less">Less</a></li>
+			<li><a href="#coffee">CoffeeScript</a></li>
+			<li><a href="#stylus">Stylus</a></li>
+			<li><a href="#mix">Mix</a></li>
+			<li><a href="#base">Base64</a></li>
+			<li><a href="#autoprefix">Autoprefix</a></li>
+		</ol>
+	</nav>
+	<div id="page">
+		<!-- Section: Intro -->
+		<section id="intro">
+			<h1>Introduction</h1>
+			<hr>
+			<h3>Mixture handles compilation automatically for Sass, Less, Stylus and CoffeeScript. We've also introduced our own type "Mix" which simply extends the functionality of standard script and style files, allowing you to combine in a similar way to using the import functions of Sass or Less.</h3>
+		</section>
+		<!-- Section: Locations -->
+		<section id="locations">
+			<h1>Locations</h1>
+			<hr>
+			<h3>Mixture will only preprocess files within your project if they are defined within the "preprocessorLocations" setting.</h3>
+			<p>Please see the <a href="/mixture#settings">Mixture</a> section and settings.</p>
+		</section>
+		<!-- Section: Assets -->
+		<section id="assets">
+			<h1>Stylesheet Assets</h1>
+			<hr>
+			<h3>Referencing assets from a stylesheet (css, less, sass, styl)</h3>
+			<p>We recommened using relative paths</p>
+			<p>Example: <code>../images/my-image.jpg</code></p>
+			<p class="note">Mixture will attempt to update absolute paths when converting to HTML or Publishing.</p>
+			<p class="note">If using Compass you can adjust the "compass/config.rb" so as all generated paths are relative.</p>
+		</section>
+		<!-- Section: Sass -->
+		<section id="sass">
+			<h1>Sass (Ruby)</h1>
+			<hr>
+			<h3>Sass files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h3>
+			<p class="note">The Ruby implementation of Sass is the default in Mixture, but you change to "libsass" as detailed below by updating the Sass settings in the Mixture Json settings file. We will eventually default to the "libsass" version.</p>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Sass file is: <code>.sass</code> or <code>.scss</code>.</p>
+			<p class="note">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.scss</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Sass / Scss you do not need to enter "_" or the extension eg <code>@import "myfile";</code></p>
+			<h3>Sass settings</h3>
+			<p>You can adjust the Sass settings via the Mixture settings file, please be aware that these settings do not affect compass (please see the compass section below which explains how compass is managed).</p>
+			<p>Example settings:</p>
+			<pre class="prettyprint linenums pad">"sass": {
+  "outputStyle": "nested",
+  "sourceMap": false,
+  "cache": false,
+  "lineNumbers": false,
+  "debugInfo": false,
+  "globbing": false,
+  "useLibSass": false
+}</pre>
+			<p class="note">Mixture currently implements version 3.4.9, you can view more on Sass at <a href="http://sass-lang.com">http://sass-lang.com</a>. You can use any version of Sass / Gems &amp; Plugins with Mixture by pointing Mixture at your own Ruby install: <a href="/custom-ruby">Read more on setting up Mixture with a custom Ruby install</a>.</p>
+			<p class="note">Mixture supports <a href="/globbing">Sass Globbing</a> but currently only in the non-libsass version.</p>
+		</section>
+		<!-- Section: Sass -->
+		<section id="libsass">
+			<h1>Sass (libsass)</h1>
+			<hr>
+			<h3>Sass files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h3>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Sass file is: <code>.sass</code> or <code>.scss</code>.</p>
+			<p class="note">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.scss</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Sass / Scss you do not need to enter "_" or the extension eg <code>@import "myfile";</code></p>
+			<h3>Sass settings</h3>
+			<p>You can adjust the Sass settings via the Mixture settings file, please be aware that these settings do not affect compass (please see the compass section below which explains how compass is managed).</p>
+			<p>Example settings:</p>
+			<pre class="prettyprint linenums pad">"sass": {
+  "outputStyle": "nested",
+  "sourceMap": false,
+  "lineNumbers": false,
+  "useLibSass": true
+}</pre>
+			<p class="note">Please note: when using source maps in Mixture you should also turn on "debug" in the Mixture settings file - this stops Mixture from attempting to always load the minified js or css file which would not contain the sourcemap information.</p>
+		</section>
+		<!-- Section: Compass -->
+		<section id="compass">
+			<h1>Compass + Sass</h1>
+			<hr>
+			<h3>If you wish to use Compass to manage your Sass files you can!</h3>
+			<p>Simply update the setting <code>useCompass</code> to true, this will stop Mixture handling Sass and allow Compass to take over, Mixture will still display validation warnings.</p>
+			<p>When Compass is activated on a project a compass config file <code>.compass/config.rb</code> will be created in the root of your project and you will be notified to make some quick adjustments which will tell Compass about your project. Please open the file and follow the comments.</p>
+			<p class="note">Mixture currently implements version 1.0.1. Learn more about Compass at <a href="http://compass-style.org/">http://compass-style.org/</a></p>
+			<p class="note">SourceMap can be activated in the config.rb file - please refer to the compass docs.</p>
+			<h3>Plugins</h3>
+			<p class="note">You can install and use compass plugins &amp; frameworks with Mixture. We have put together some <a href="/compass-plugins">documentation</a> on getting started.</p>
+			<p class="note">Mixture supports <a href="/globbing">Sass Globbing</a>.</p>
+		</section>
+		<!-- Section: Global -->
+		<section id="less">
+			<h1>Less</h1>
+			<hr>
+			<h3>Less files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h3>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Less file is: <code>.less</code>.</p>
+			<p class="note">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.less</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Less you do not need to enter the extension eg <code>@import "_myfile";</code></p>
+			<p class="note">Mixture currently implements version 2.1.1 Learn more about Less at <a href="http://lesscss.org/">http://lesscss.org/</a></p>
+			<h3>Less settings</h3>
+			<p>You can adjust the Less settings via the Mixture settings file.</p>
+			<p>Example settings:</p>
+			<pre class="prettyprint linenums pad">"less": {
+  "sourceMap": false,
+  "lineNumbers": false
+}</pre>
+			</p>
+			<p class="note">Please note: when using source maps in Mixture you should also turn on "debug" in the Mixture settings file - this stops Mixture from attempting to always load the minified js or css file which would not contain the sourcemap information.</p>
+		</section>
+		<!-- Section: CoffeeScript -->
+		<section id="coffee">
+			<h1>CoffeeScript</h1>
+			<hr>
+			<h3>CoffeeScript files are automatically handled by Mixture.</h3>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorScriptOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a CoffeeScript file is: <code>.coffee</code>.</p>
+			<p>If you would like your coffeescript files compiled "bare" you can do so by adding <code>.bare.</code> to the original file name. The word bare will be stripped from the output file.</p>
+			<p class="note">Mixture currently implements version 1.8.0. Learn more about CoffeeScript at <a href="http://coffeescript.org/">http://coffeescript.org/</a></p>
+		</section>
+		<!-- Section: Stylus -->
+		<section id="stylus">
+			<h1>Stylus</h1>
+			<hr>
+			<h3>Stylus files are automatically handled by Mixture.</h3>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Stylus file is: <code>.styl</code>.</p>
+			<p class="note">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.styl</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Stylus you do not need to enter the extension eg <code>@import "_myfile";</code></p>
+			<p class="note">Mixture currently implements version 0.49.3. Learn more about Stylus at <a href="http://learnboost.github.com/stylus">http://learnboost.github.com/stylus</a></p>
+		</section>
+		<!-- Section: Mix -->
+		<section id="mix">
+			<h1>Mix (a custom Mixture type)</h1>
+			<hr>
+			<p>Mix files are simply <code>.js</code> or <code>.css</code> files with <code>.mix.</code> in the file name. A mix file simply extends the functionality of a normal style or script file and allows you to import and combine.</p>
+			<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>.</p>
+			<p>A minified version will also be output with <code>.min.</code> appended to the name.</p>
+			<p>Example <code>style.mix.css</code>:</p>
+			<pre class="prettyprint linenums pad">@import "another-style-file";
+@import "common/reset";
+@import "common/clearfix.css";</pre>
+			<p>The above will combine all 3 files into the output file <code>style.css</code>, a minifed version will also be created.</p>
+			<p class="note">Note: If you do not add the extension eg <code>@import "style"</code> Mixture will look for the file <code>_style.css</code>.</p>
+			<p>Script files work in the same way and have their own setting <code>preprocessorScriptOutput</code>.</p>
+			<p class="note">We recommend you use ; to terminate the import as shown above.</p>
+		</section>
+		<section id="base">
+			<h1>Base64 Automatically</h1>
+			<hr>
+			<p>Mixture can convert stylesheet asset paths to inline base64, this logic can be used by files with the following extensions <code>css, less, sass, scss, styl</code>. <a href="http://quick.as/qligpe">Watch a demonstration</a>.</p>
+			<p>Example:</p>
+			<pre class="prettyprint linenums pad">.my-class {
+  background-image: inline-image('../img/myimage.png');
+  background-repeat: no-repeat;
+}</pre>
+			<p>If the image is found then the above will automatically be converted like so (example):</p>
+			<pre class="prettyprint linenums pad">.my-class {
+  background-image: url(data:image/png;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5...);
+  background-repeat: no-repeat;
+}</pre>
+			<p class="note">If you are using Compass then this will be handled via Compass instead of Mixture.</p>
+		</section>
+		<!-- Section: Online -->
+		<section id="autoprefix">
+			<h1>Autoprefix</h1>
+			<hr>
+			<h3>Mixture has support for Autoprefixer, please see the <a href="/autoprefix">Autoprefix section</a>.</h3>
+		</section>
+	</div>
+
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="content">
+                    <p>Mixture Limited. Holly Corner, Brimfield, Ludlow SY8 4NQ. United Kingdom. No. 8232592</p>
+                </div>
+            </footer>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="/public/scripts/prettify.min.js"></script>
+        <script src="/public/scripts/app.min.js"></script>
+    </body>
+</html>

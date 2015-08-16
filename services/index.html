@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Title block allowing child pages to override -->
+        <title>Templates : Mixture Documentation</title>
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+        <!-- Styles -->
+        <link href="/public/styles/app.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <!--[if lt IE 9]>
+            <link href="/public/styles/ie.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <![endif]-->
+        <!-- Necessary head scripts -->
+        <script src="/public/scripts/modernizr.2.6.2.min.js"></script>
+        <!-- Analytics Mixture Documentation -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35293218-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="container">
+                <header id="header">
+                    <!-- Include navigation -->
+                    <nav>
+	<ol>
+		<li class="ident"><a href="/" title="Home">Mixture</a></li>
+		<li><a href="/templates" title="Templates" >Templates</a></li>
+		<li><a href="/models" title="Models" >Models</a></li>
+		<li><a href="/preprocessors" title="Preprocessors" >Preprocessors</a></li>
+		<li><a href="/optimisation-debug" title="Optimise" >Optimise</a></li>
+		<li><a href="/mixture" title="Mixture" >Mixture</a></li>
+		<li><a href="/services" title="Services" class="selected">Services</a></li>
+		<li><a href="/simple" title="Simple Mode" >Simple Mode</a></li>
+		<li><a href="/collections" title="Collections" >Collections</a></li>
+	</ol>
+</nav>
+                    <!-- Header block child page -->
+                    
+	<h1>Tools &amp; Services</h1>
+	<h2>Tools &amp; 3rd party services to improve your life!</h2>
+
+                </header>
+                <!-- Content block child page -->
+                <div id="content">
+                    
+	<nav id="sidenav">
+		<ol>
+			<li class="selected"><a href="#intro">Introduction</a></li>
+			<li><a href="#html">Convert HTML</a></li>
+			<li><a href="#browserstack">BrowserStack</a></li>
+			<li><a href="#ftp">FTP</a></li>
+			<li><a href="#github-pages">GitHub Pages</a></li>
+			<li><a href="#amazon-s3">Amazon S3</a></li>
+		</ol>
+	</nav>
+	<div id="page">
+		<!-- Section: Introduction -->
+		<section id="intro">
+			<h1>Introduction</h1>
+			<hr>
+			<h3>The following details additional services built into Mixture. We are working on various integrations with services and tooling that we think will aid your development process and so this list will grow with future updates.</h3>
+		</section>
+		<!-- Section: Html -->
+		<section id="html">
+			<h1>Convert a Mixture project to flat HTML</h1>
+			<hr>
+			<p class="note">This feature is not available while in "simple" mode.</p>
+			<p>This will convert a Mixture project to straight HTML and drop it into the root of your project directory under a directory called "converted-html".</p>
+			<p>You can adjust the location of the "converted-html" directory within the Mixture settings.</p>
+		</section>
+		<!-- Section: Browserstack -->
+		<section id="browserstack">
+			<h1>BrowserStack, testing in the cloud!</h1>
+			<hr>
+			<p>Once you have added your BrowserStack API key into your online Mixture account you will be able to access one click tunneling via Mixture to your local project - we even live refresh any changes!</p>
+			<p>Here's some details to get you started...</p>
+			<p>1. To get your API key from BrowserStack, sign in to BrowserStack > Your account > Local testing and grab the "Local testing key". Add this to your Mixture account.</p>
+			<p>2. You can access your online Mixture account by using the avatar button in the application header chrome, we will be releasing web login for your account very soon. Once in your account, click on services to add / update your API key.</p>
+			<p class="note">If you are running Mixture and your local server address is not <code>localhost</code> this can sometimes cause issues viewing on BrowserStack (it really depends on your system setup). If this happens update the project settings and force Mixture to run on <code>localhost</code> and try again. See more about <a href="/mixture#settings">Mixture settings</a>.</p>
+		</section>
+		<!-- Section: Coming -->
+		<section id="ftp">
+			<h1>FTP</h1>
+			<hr>
+			<h3>Mixture has support for FTP, please see the <a href="/ftp">FTP section</a>.</h3>
+		</section>
+		<section id="github-pages">
+			<h1>GitHub Pages</h1>
+			<hr>
+			<h3>Mixture has support for GitHub Pages, please see the <a href="/github-pages">GitHub Pages section</a>.</h3>
+		</section>
+		<section id="amazon-s3">
+			<h1>Amazon S3 hosting</h1>
+			<hr>
+			<h3>Mixture has support for Amazon S3 hosting, please see the <a href="/amazon-s3">Amazon S3 section</a>.</h3>
+		</section>
+	</div>
+
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="content">
+                    <p>Mixture Limited. Holly Corner, Brimfield, Ludlow SY8 4NQ. United Kingdom. No. 8232592</p>
+                </div>
+            </footer>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="/public/scripts/prettify.min.js"></script>
+        <script src="/public/scripts/app.min.js"></script>
+    </body>
+</html>

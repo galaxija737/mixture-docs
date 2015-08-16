@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Title block allowing child pages to override -->
+        <title>Collections : Mixture Documentation</title>
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+        <!-- Styles -->
+        <link href="/public/styles/app.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <!--[if lt IE 9]>
+            <link href="/public/styles/ie.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <![endif]-->
+        <!-- Necessary head scripts -->
+        <script src="/public/scripts/modernizr.2.6.2.min.js"></script>
+        <!-- Analytics Mixture Documentation -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35293218-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="container">
+                <header id="header">
+                    <!-- Include navigation -->
+                    <nav>
+	<ol>
+		<li class="ident"><a href="/" title="Home">Mixture</a></li>
+		<li><a href="/templates" title="Templates" >Templates</a></li>
+		<li><a href="/models" title="Models" >Models</a></li>
+		<li><a href="/preprocessors" title="Preprocessors" >Preprocessors</a></li>
+		<li><a href="/optimisation-debug" title="Optimise" >Optimise</a></li>
+		<li><a href="/mixture" title="Mixture" >Mixture</a></li>
+		<li><a href="/services" title="Services" >Services</a></li>
+		<li><a href="/simple" title="Simple Mode" >Simple Mode</a></li>
+		<li><a href="/collections" title="Collections" class="selected">Collections</a></li>
+	</ol>
+</nav>
+                    <!-- Header block child page -->
+                    
+	<h1>Collections</h1>
+	<h2>Create, manipulate, paginate and query collections of data.</h2>
+
+                </header>
+                <!-- Content block child page -->
+                <div id="content">
+                    
+	<nav id="sidenav">
+		<ol>
+			<li class="selected"><a href="#intro">Introduction</a></li>
+			<li><a href="#file">Structure</a></li>
+			<li><a href="#meta">Posts / Meta</a></li>
+			<li><a href="#collections">Collection tag</a></li>
+			<li><a href="#groups">Grouped tag</a></li>
+			<li><a href="#archive">Archive tag</a></li>
+			<li><a href="#items">Item tag</a></li>
+			<li><a href="#rss">RSS Example</a></li>
+			<li><a href="#api">Collections API</a></li>
+			<li><a href="#publishing">Publish / Convert</a></li>
+		</ol>
+	</nav>
+	<div id="page">
+		<!-- Section: Welcome -->
+		<section id="intro">
+			<h1>Introduction</h1>
+			<hr>
+			<h3>The Collections feature allows you to easily create, manipulate, paginate and query collections of data throughout a Mixture project.</h3>
+			<p>A perfect use case for collections is a blog or portfolio. You can add more than one collection to a project and collection items can be authored in markdown, haml or liquid.</p>
+			<p><iframe width="640" height="360" src="http://www.youtube.com/embed/zexkJ8wTOXg" frameborder="0" allowfullscreen></iframe></p>
+                 <p><a href="https://github.com/teammixture/simple-blog">Simple Blog using Collections</a>.<p>
+		</section>
+		<!-- Section: file -->
+		<section id="file">
+			<h1>Structure</h1>
+			<hr>
+			<p>Creating collections and adding posts is very straightforward, simply create a folder named <code>collections</code> in the root of your project and then create a folder for each collection within this folder</p>
+			<p>The name of your collection is important as it will become part of it's posts URL and you will also use the name when calling the collection around your project.</p>
+			<p>The following is an example structure with a collection named blog and one named portfolio:</p>
+			<pre class="prettyprint linenums">
+- collections
+-- blog
+-- portfolio
+</pre>
+			<h3>Adding items / posts</h3>
+			<p>To add items / posts to your collections, simply create and drop the <code>markdown</code>, <code>haml</code> or <code>liquid</code> file into the desired collection.</p>
+			<p>For information on what a post file looks like see "posts / meta" below.</p>
+			<p>The following is an example structure with posts:</p>
+			<pre class="prettyprint linenums">
+collections
+- blog
+-- 2012-04-03.md
+-- 2013-04-04.md
+- portfolio
+-- example1.md
+-- example2.haml
+-- example3.liquid 
+</pre>
+		</section>
+		<!-- Section: meta -->
+		<section id="meta">
+			<h1>Posts / Meta</h1>
+			<hr>
+			<p>The name of your post along with the name of the collection will become the URL, although you can override the posts URL within the meta.</p>
+			<p>At the beginning of your post you can define simple meta information about your post in a <a href="http://en.wikipedia.org/wiki/YAML">YAML</a> format, for example this data can be used to affect the page URL, publish status, publish date and more. You can add your own custom meta information and this can be used to query or display &mdash; you can even use the meta information within the layout file or includes.</p>
+			<p>The following is the default meta (these are reserved names in the meta):</p>
+			<ul>
+				<li><code>layout</code> expects the name of a layout file (extension not required &amp; must only reference a liquid layout file) &mdash; by default and if not set Mixture will use the default layout defined in the settings file.</li>
+				<li><code>title</code> the title of the post.</li>
+				<li><code>published</code> expects either true or false &mdash; by default and if not set Mixture will treat as false.</li>
+				<li><code>date</code> expects a date and time in the format <code>yyyy-MM-dd hh:mm</code> eg. <code>date: 2012-04-03 00:00</code> &mdash; by default and if not set Mixture will use the file creation date and time.</li>
+				<li><code>slug</code> a URL which will be used with the collection name eg. <code>slug: /example-post</code> &mdash; by default and if not set Mixture will use the file name.</li>
+			</ul>
+			<p class="note">Note: when adding new collection items don't forget to add the <code>"published":true</code> meta.</p>
+			<p class="note">When adding meta data if you have characters like : in your text, you will need to wrap it in " example...</p>
+			<code>title: example: how to use</code>
+			<p>Would become...</p>
+			<code>title: "example: how to use"</code>
+			<p>Mixture will warn you of issues when you save a file or when you statup your project.</p>
+			<h3>Example Markdown file (including custom meta)</h3>
+			<p><code>my-markdown-file.md</code></p>
+			<pre class="prettyprint linenums">---
+title: Example post
+published: true
+date: 2013-04-03 00:00
+slug: /example-post
+tags: [example,news,story]
+---
+
+#[Example post](/link)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.</pre>
+			<h3>Example Haml file (including custom meta)</h3>
+			<p><code>my-haml-file.haml</code></p>
+			<pre class="prettyprint linenums">---
+title: Example post
+published: true
+date: 2013-04-03 00:00
+slug: /example-post
+tags: [example,news,story]
+---
+
+%h1
+  %a{:href => '/link'}Example post
+%p 
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</pre>
+			<h3>Example Liquid file (including custom meta)</h3>
+			<p><code>my-liquid-file.liquid</code></p>
+			<pre class="prettyprint linenums">---
+title: Example post
+published: true
+date: 2013-04-03 00:00
+slug: /example-post
+tags: [example,news,story]
+---
+
+&lt;h1&gt;&lt;a href="/link"&gt;Example post Liquid&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;</pre>
+			<h3>Post content &mdash; Important</h3>
+			<p class="note">When viewing a collection item, the content of this item is automatically rendered into <code>{% block content %}{% endblock %}</code> within it's Layout file. If this block does not exist no content will be displayed.</p>
+		</section>
+		<!-- Section: Collections -->
+		<section id="collections">
+			<h1>Collection tag</h1>
+			<hr>
+			<p>The liquid <code>collection</code> tag allows you to call and manipulate the collection items throught your project.</p>
+			<p>The collection tag and in fact all of the tags available enable you to use standard Liquid tags along side, you will see from the following examples that we are using the standard <code>for</code> tag with our <code>collection</code> tag.</p>
+			<p>The following is the most basic example of listing and printing each title:</p>
+			<pre class="prettyprint linenums">
+{% collection "blog" %}
+  &lt;ul&gt;
+  {% for post in collection.items %}
+    &lt;li&gt;{{ post.title }}&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endcollection %}
+</pre>
+		<p><br>The following variables are available within a collection tag:</p>
+		<ul>
+			<li><code>collection.items</code> an array of post items.</li>
+			<li><code>collection.size</code> the total amount of collection items.</li>
+			<li><code>collection.pages</code> the total amount of pages.</li>
+			<li><code>collection.page_size</code> records per page.</li>
+			<li><code>collection.current_offset</code> the current offset.</li>
+			<li><code>collection.next</code> true or false if another page of items exists based on the current.</li>
+			<li><code>collection.previous</code> true or false if a previous page of items exists based on the current.</li>
+		</ul>
+		<p>The <code>collection.items</code> variable exposes the following data:</p>
+		<ul>
+			<li><code>title</code> the title of the post</li>
+			<li><code>date</code> the date of the post</li>
+			<li><code>slug</code> the full article URL</li>
+			<li><code>body</code> the article content</li>
+			<li>* any custom meta information</li>
+		</ul>
+		<p>By default mixture pages large sets of data, if you do not set a paging amount Mixture will automatically pull a maximum of 50.</p>
+		<p>The examples below show the different options available to the collection tag, you can of course mix and match these options, but the collection name is always required.</p>
+		<p>The following is an example of how to set paging on the collection tag (max 50 per page):</p>
+		<pre class="prettyprint linenums">
+{% collection "blog" by 2 %}
+</pre>
+		<p><br>You can order a collection by date <code>desc</code> or <code>asc</code>:</p>
+		<pre class="prettyprint linenums">
+{% collection "blog" by 2 order desc %}
+</pre>
+		<p><br>You can query a collection by it's meta data, even custom meta data:</p>
+		<pre class="prettyprint linenums">
+{% collection "blog" by 2 query 'tag=story' order desc %}
+</pre>
+		<p><br>You can chain queries together:</p>
+		<pre class="prettyprint linenums">
+{% collection "blog" by 2 query 'tag=story&amp;tag=news&amp;custom=example' order desc %}
+</pre>
+		<p><br>A query can even accept liquid variables, this allows you to make queries dynamic so as they work with the page <a href="/models#request">request model</a> or <a href="/routes">routing</a>:</p>
+		<pre class="prettyprint linenums">
+{% collection "blog" by 2 query 'tag={{ mixture.route.tag }}&amp;custom={{ request.query.custom }}' order desc %}
+</pre>
+		<p><br>The best way to see how collections work is to play with the example project, you can download this project from <a href="https://github.com/teammixture/mixture-collections">GitHub</a>.</p>
+		<p class="note">A maximum of 3 collection tags can exist on a page at a time.</p>
+		</section>
+		<!-- Section: Groups -->
+		<section id="groups">
+			<h1>Grouped tag</h1>
+			<hr>
+			<p>The grouped tag groups and exposes collection items by <code>date</code> or custom meta. The grouped tag expects the collection name and then the group:</p>
+		<pre class="prettyprint linenums">
+{% grouped 'blog' by 'date' %}
+ &lt;ul&gt;
+  {% for group in grouped.items %}
+    &lt;li&gt;{{ group.date }}&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endgrouped %}
+</pre>
+		<p><br>The following variables are available within a grouped tag when grouped by date:</p>
+		<ul>
+			<li><code>date</code> the group date.</li>
+			<li><code>count</code> the total items in this group.</li>
+		</ul>	
+		<p>You can group by custom meta, as an example if we had meta <code>tags</code> we could group like this:</p>
+		<pre class="prettyprint linenums">
+{% grouped 'blog' by 'tags' %}
+ &lt;ul&gt;
+  {% for group in grouped.items %}
+    &lt;li&gt;{{ group.name }}&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endgrouped %}
+</pre>
+		<p><br>The following variables are available within a grouped tag when grouped by custom meta:</p>
+		<ul>
+			<li><code>name</code> the name of the group.</li>
+			<li><code>count</code> the total items in this group.</li>
+		</ul>
+		<p class="note">A maximum of 5 grouped tags can exist on a page at a time locally and 3 when published.</p>		
+		</section>
+		<!-- Section: Archive -->
+		<section id="archive">
+			<h1>Archive tag</h1>
+			<hr>
+			<p>The archive tag is very similar to the grouped tag, it groups by year but also returns all child objects for each year:</p>
+			<pre class="prettyprint linenums">
+{% archive "blog" %}
+  {% for item in archive.items %}
+    &lt;h3&gt;{{ item.year }}&lt;/h3&gt;
+    &lt;ul&gt;
+    {% for post in item.children %}
+      &lt;li&gt;{{ post.title }}&lt;/li&gt;
+    {% endfor %}
+    &lt;/ul&gt;
+  {% endfor %}
+{% endarchive %}
+</pre>
+		<p><br>The <code>archive.items</code> variable exposes the following data:</p>
+		<p class="note">A maximum of 1 archive tag can exist on a page at a time.</p>
+		<ul>
+			<li><code>name</code> the year of the group.</li>
+			<li><code>count</code> the total items in this group.</li>
+			<li><code>children</code> an array of posts within the year group.</li>
+		</ul>
+           <p>The children contain the following:</p>
+           <ul>
+              <li><code>title</code> the title of the collection / post item.</li>
+              <li><code>date</code> the date of the collection /post item.</li>
+              <li><code>slug</code> the url to the collection / post item.</li>
+              <li>(coming soon) <code>meta</code> all collection meta data (including custom data).</li>
+            </ul>
+		</section>
+		<!-- Section: Items -->
+		<section id="items">
+			<h1>Item tag</h1>
+			<hr>
+			<p>The item tag can be used on a layout file used by a collection item and will only display when viewed on an item. The item tag essentially adds paging to a collection item, allowing the user to page from post to post.</p>
+			<p>You do not need to define a collection, but like the collection tag you can order and query an item:</p>
+			<pre class="prettyprint linenums">
+{% item order desc %}
+  {% if next or previous %}
+    &lt;ul&gt;
+    {% if next %}
+      &lt;li&gt;&lt;a href="{{ next.url }}"&gt;{{ next.title }}&lt;/a&gt;&lt;/li&gt;
+    {% endif %}
+    {% if previous %}
+      &lt;li&gt;&lt;a href="{{ previous.url }}"&gt;{{ previous.title }}&lt;/a&gt;&lt;/li&gt;
+    {% endif %}
+    &lt;/ul&gt;
+  {% endif %}
+{% enditem %}
+</pre>
+		<p><br>The following data is exposed within the <code>item</code> tag:</p>
+		<ul>
+			<li><code>next</code> true of false if another post exists.</li>
+			<li><code>next.url</code> the url of the next item</li>
+			<li><code>next.title</code> the title of the next item.</li>
+			<li><code>next.date</code> the date of the next item.</li>
+			<li><code>previous</code> true of false if a previous post exists.</li>
+			<li><code>previous.url</code> the url of the previous item</li>
+			<li><code>previous.title</code> the title of the previous item.</li>
+			<li><code>previous.date</code> the date of the previous item.</li>
+		</ul>
+		<p class="note">A maximum of 1 item tag can exist on a page at a time.</p>
+		</section>
+		<section id="rss">
+			<h1>Creating an RSS feed</h1>
+			<hr>
+			<p>Creating an RSS feed with your collection data is very straight forward, you simply create a Liquid page and add your RSS markup whilst pulling data from your collection.</p>
+			<p>The following is an example page:</p>
+			<pre class="prettyprint linenums">
+{% layout &quot;none&quot; %}
+{% contenttype &quot;application/xml&quot; %}
+&lt;rss version=&quot;2.0&quot;&gt;
+  &lt;channel&gt;
+    &lt;generator&gt;Mixture&lt;/generator&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;link&gt;link.com&lt;/link&gt;
+    &lt;description&gt;Description&lt;/description&gt;
+    &lt;language&gt;en&lt;/language&gt;
+    &lt;webMaster&gt;email&lt;/webMaster&gt;
+    &lt;copyright&gt;{{ &#39;now&#39; | date: &quot;%Y&quot; }} Name&lt;/copyright&gt;
+    &lt;pubDate&gt;Thu, 06 Jun 2013 12:17:05 GMT&lt;/pubDate&gt;
+    &lt;lastBuildDate&gt;Thu, 06 Jun 2013 12:17:05 GMT&lt;/lastBuildDate&gt;
+    {% collection &quot;blog&quot; by 10 order desc %}
+      {% for item in collection.items %}
+      &lt;item&gt;
+        &lt;title&gt;{{ item.title | html_encode }}&lt;/title&gt;
+        &lt;link&gt;{{ item.slug }}&lt;/link&gt;
+        &lt;guid&gt;{{ item.slug }}&lt;/guid&gt;
+        {% for category in item.categories %}
+          &lt;category&gt;{{ category | html_encode }}&lt;/category&gt;
+        {% endfor %}
+        &lt;pubDate&gt;{{ item.date | date:&#39;%a, %d %b %Y %H:%M:%S GMT&#39;}}&lt;/pubDate&gt;
+        &lt;description&gt;{{ item.body | strip_html | truncate:50,'...' | html_encode }}&lt;/description&gt;
+      &lt;/item&gt;
+     {% endfor %}
+   {% endcollection %}
+  &lt;/channel&gt;
+&lt;/rss&gt;
+</pre>			
+		</section>
+		<!-- Section: API -->
+		<section id="api">
+			<h1>Collections API</h1>
+			<hr>
+			<p>The collections API exposes the collection data as a JSON object which can then be called via javascript for ajax requests.</p>
+			<p>You have the same options as you do with the collections tag, you can order, query and page this data.</p>
+			<p>The following options are available and handled via the querystring:</p>
+			<ul>
+				<li><code>collection</code> the collection to query.</li>
+				<li><code>page</code> the page of items you wish to retrieve.</li>
+				<li><code>rpp</code> the items to display per page (max 50)</li>
+				<li><code>order</code> expects either <code>desc</code> or <code>asc</code>.</li>
+				<li>* any custom meta can be queried.</li>
+			</ul>
+			<p>The following are example queries and responses:</p>
+			<pre class="prettyprint linenums">
+URL: /_collections
+
+Returns: A list of collections that exist in the project.
+</pre>
+			<p><br>Querying a collection:</p>
+			<pre class="prettyprint linenums">
+URL: /_collections?collection=blog&amp;page=1&amp;rpp=10&amp;order=desc
+
+Returns: Page 1 of the blog collection, 10 records per page and in descending date order
+</pre>
+			<p><br>Querying a collection with custom meta:</p>
+			<pre class="prettyprint linenums">
+URL: /_collections?collection=blog&amp;page=1&amp;rpp=10&amp;order=desc&amp;tags=story
+
+Returns: Page 1 of the blog collection, 10 records per page and in descending date order that have the tag story
+</pre>
+		</section>
+		<!-- Section: Publishing -->
+		<section id="publishing">
+			<h1>Publishing &amp; Convert to HTML</h1>
+			<hr>
+			<p>You can publish or convert to HTML a collections project.</p>
+			<p class="note">Collection items will only be published on intitial publish or if Mixture detects changes.</p>
+		</section>
+	</div>
+
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="content">
+                    <p>Mixture Limited. Holly Corner, Brimfield, Ludlow SY8 4NQ. United Kingdom. No. 8232592</p>
+                </div>
+            </footer>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="/public/scripts/prettify.min.js"></script>
+        <script src="/public/scripts/app.min.js"></script>
+    </body>
+</html>

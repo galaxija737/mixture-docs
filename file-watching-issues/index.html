@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Title block allowing child pages to override -->
+        <title>Welcome : Mixture Documentation</title>
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+        <!-- Styles -->
+        <link href="/public/styles/app.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <!--[if lt IE 9]>
+            <link href="/public/styles/ie.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <![endif]-->
+        <!-- Necessary head scripts -->
+        <script src="/public/scripts/modernizr.2.6.2.min.js"></script>
+        <!-- Analytics Mixture Documentation -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35293218-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="container">
+                <header id="header">
+                    <!-- Include navigation -->
+                    <nav>
+	<ol>
+		<li class="ident"><a href="/" title="Home">Mixture</a></li>
+		<li><a href="/templates" title="Templates" >Templates</a></li>
+		<li><a href="/models" title="Models" >Models</a></li>
+		<li><a href="/preprocessors" title="Preprocessors" >Preprocessors</a></li>
+		<li><a href="/optimisation-debug" title="Optimise" >Optimise</a></li>
+		<li><a href="/mixture" title="Mixture" >Mixture</a></li>
+		<li><a href="/services" title="Services" >Services</a></li>
+		<li><a href="/simple" title="Simple Mode" >Simple Mode</a></li>
+		<li><a href="/collections" title="Collections" >Collections</a></li>
+	</ol>
+</nav>
+                    <!-- Header block child page -->
+                    
+  <h1>File Watching Issues</h1>
+  <h2>A quick explanation as to why Mixture might be having issues watching a project.</h2>
+
+                </header>
+                <!-- Content block child page -->
+                <div id="content">
+                    
+  <nav id="sidenav">
+    <ol>
+      <li class="selected"><a href="#one">Details</a></li>
+    </ol>
+  </nav>
+  <div id="page">
+    <!-- Section: Welcome -->
+    <section id="one">
+      <h1>Details</h1>
+      <hr>
+      <h3>Mixture relies heavily on the file notification API of the OS (OSX, Windows 7, 8 etc) on both the Mac and Windows application.</h3>
+      <p>When a file is changed, deleted, renamed or updated the OS notifies and Mixture then carries out any file watching logic - for example: Sass preprocessing.</p>
+      <p>If you are using Mixture to watch a project located on a network drive which doesn't have the necessary OS to notify of file changes then Mixture will never be notified and none of the file watching logic within Mixture will be fired.</p>
+      <p class="note">Some file watching services can also block file watching services like Mixture. A good example of this is Dropbox, most of the time Dropbox will be play well with other services, but there is a known issue with Dropbox that can cause it to block file watching. If this happens for you then simply moving the project usually fixes the issue.</p>
+    </section>
+  </div>
+
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="content">
+                    <p>Mixture Limited. Holly Corner, Brimfield, Ludlow SY8 4NQ. United Kingdom. No. 8232592</p>
+                </div>
+            </footer>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="/public/scripts/prettify.min.js"></script>
+        <script src="/public/scripts/app.min.js"></script>
+    </body>
+</html>
