@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Model Example : Mixture + Bootstrap</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="public/css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <style>
+            body {
+                padding-top: 50px;
+                position: relative;
+            }
+        </style>
+        <!-- TODO: Complete this project :) -->
+    </head>
+    <body data-spy="scroll" data-target="#sidenav" data-offset="120">
+        <div class="navbar-header navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="index.html">Home</a></li>
+                <li ><a href="templates.html">Templates</a></li>
+                <li ><a href="models.html">Models</a></li>
+                <li ><a href="preprocessors.html">Preprocessors</a></li>
+                <li ><a href="optimise.html">Optimise</a></li>
+                <li ><a href="mixture.html">Mixture</a></li>
+                <li ><a href="services.html">Services</a></li>
+                <li ><a href="simple-mode.html">Simple mode</a></li>
+                <li ><a href="collections.html">Collections</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+        
+
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#how">Instructions</a></li>
+				<li><a href="#example2">Windows</a></li>
+				<li><a href="#example1">Mac</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Custom Ruby<br><small>Point Mixture at a custom Ruby install.</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+		<p class="callout callout-alert">If you've been using this feature previously, we've changed the way it works, you no longer need the setting <code>"customRubyPath"</code> so please remove - please read the instructions below...</p>
+		<h3>Mixture uses it's own install of Ruby, Compass and Sass, but if you would like to use your own install and have more control of the Gems, you can point Mixture at a custom install.</h3>
+
+	</section>
+
+	<section id="how">
+
+		<h1>Instructions</h1>
+		<hr>
+		<p>Simply add or update the following to your Mixture settings <code>"customRuby": true</code></p>
+		<p>Mixture will automatically find the necessary paths from the system for your currently active version of Ruby.</p>
+		<p>Don't forget to ensure you have the necessary gems installed.</p>
+		<p class="callout callout-info">If you have any problems or need to add the paths to ruby manually, please read the instructions below for your operating system.</p>
+
+	</section>
+
+	<section id="example2">
+
+		<h1>Windows Custom Path</h1>
+		<hr>
+		<p>You'll need to update or add (if missing) the following setting to your mixture.json file.</p>
+		<p><code>"customRubyPath"</code></p>
+		<p>Simply change this to the path of your Ruby install, for example if my install was located <code>c:/ruby200</code> I would add the following path <code>"customRubyPath": "/Ruby200/"</code>.</p>
+		<p class="callout callout-info">Note: unlike the Mac version you do not need to add the path to the Gems folder.</p>
+
+	</section>
+
+	<section id="example1" style="min-height: 196px;">
+
+		<h1>Mac Custom Path</h1>
+		<hr>
+		<p>You'll need to update or add (if missing) the following setting to your mixture.json file.</p>
+		<p class="callout callout-info">Note: The Mac version requires that you also add a path to the Gems.</p>
+		<p><code>"customRubyPath"</code></p>
+		<p>Simply change this to the path of your Ruby install and Gems, for example if my install was located <code>/Users/xxxx/ruby</code> and my gems <code>/Users/xxxx/gems/ruby</code> I would add the following path <code>"customRubyPath": "/Users/xxxx/ruby|/Users/xxxx/gems/ruby"</code> — notice how the directories are split by a pipe "|".</p>
+		<p>You can find out the information you need about your install (paths) by running <code>gem env</code></p>
+		<p>Here is an example from running <code>gem env</code> to give you an idea:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="pun">-</span><span class="pln"> RUBY EXECUTABLE</span><span class="pun">:</span><span class="pln"> </span><span class="str">/Users/</span><span class="pln">xxxx</span><span class="pun">/.</span><span class="pln">rvm</span><span class="pun">/</span><span class="pln">rubies</span><span class="pun">/</span><span class="pln">ruby</span><span class="pun">-</span><span class="lit">1.9</span><span class="pun">.</span><span class="lit">1</span><span class="pun">-</span><span class="pln">head</span><span class="pun">/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">ruby</span></li><li class="L1"><span class="pun">-</span><span class="pln"> EXECUTABLE DIRECTORY</span><span class="pun">:</span><span class="pln"> </span><span class="str">/Users/</span><span class="pln">xxxx</span><span class="pun">/.</span><span class="pln">rvm</span><span class="pun">/</span><span class="pln">gems</span><span class="pun">/</span><span class="pln">ruby</span><span class="pun">-</span><span class="lit">1.9</span><span class="pun">.</span><span class="lit">1</span><span class="pun">-</span><span class="pln">head</span><span class="pun">/</span><span class="pln">bin</span></li><li class="L2"><span class="pun">-</span><span class="pln"> RUBYGEMS PLATFORMS</span><span class="pun">:</span></li><li class="L3"><span class="pun">-</span><span class="pln"> ruby</span></li><li class="L4"><span class="pun">-</span><span class="pln"> x86</span><span class="pun">-</span><span class="pln">darwin</span><span class="pun">-</span><span class="lit">11</span></li><li class="L5"><span class="pun">-</span><span class="pln"> GEM PATH</span><span class="pun">:</span></li><li class="L6"><span class="pun">-</span><span class="pln"> </span><span class="str">/Users/</span><span class="pln">xxxx</span><span class="pun">/.</span><span class="pln">rvm</span><span class="pun">/</span><span class="pln">gems</span><span class="pun">/</span><span class="pln">ruby</span><span class="pun">-</span><span class="lit">1.9</span><span class="pun">.</span><span class="lit">1</span><span class="pun">-</span><span class="pln">head</span></li><li class="L7"><span class="pun">-</span><span class="pln"> </span><span class="str">/Users/</span><span class="pln">xxxx</span><span class="pun">/.</span><span class="pln">rvm</span><span class="pun">/</span><span class="pln">gems</span><span class="pun">/</span><span class="pln">ruby</span><span class="pun">-</span><span class="lit">1.9</span><span class="pun">.</span><span class="lit">1</span><span class="pun">-</span><span class="pln">head@global</span></li></ol></pre>
+		<p>The first bit we need is the RUBY EXECUTABLE without /bin/ruby eg: <code>/Users/petenelson/.rvm/rubies/ruby-1.9.1-head</code></p>
+		<p>Then append this into the customRubyPath with GEM PATH separated with: |</p>
+		<p><code>"customRubyPath": "Users/petenelson/.rvm/rubies/ruby-1.9.1-head|/Users/petenelson/.rvm/gems/ruby-1.9.1-head"</code></p><p>of course your own paths will often be pretty different from this but if you follow the pattern above you should be good to go.</p>
+		<p class="callout callout-info">Please note that you may need to try a few different GEM paths if you have issues.</p>
+
+	</section>
+
+</div>
+
+
+
+        <!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

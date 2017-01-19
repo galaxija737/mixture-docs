@@ -1,0 +1,61 @@
+{% block title %}Sass Globbing : Sass globbing, no setup required{% endblock %}
+{% block content %}
+
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#example1">Sass</a></li>
+				<li><a href="#example2">Compass</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Sass Globbing<br><small>Sass globbing, no setup required</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+
+		<h4>Sass globbing allows you to import many Sass or Scss files in a single import statement. Mixture has support out of the box, no setup required.</h4>
+
+	</section>
+
+	<section id="example1">
+
+		<h1>Sass</h1>
+		<hr>
+		<p class="callout callout-info">We've updated how this works in the latest version of Mixture, you need to activate globbing in the Mixture settings as per the following example: </p><pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="str">"sass"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">  </span><span class="str">"globbing"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></li><li class="L2"><span class="pun">}</span></li></ol></pre><p></p>
+		<p class="callout callout-info">For a full list of the settings for Sass <a href="/preprocessors#sass">please see the preprocessor section</a>.</p>
+		<p>Once activated you can start adding your import statements:</p>
+		<p>Import a folder of files:</p>
+		<p><code>@import "library/mixins/*";</code></p>
+		<p>If you have issues you can also try...</p>
+		<p><code>@import "library/mixins/**";</code></p>
+		<p>Import a tree of files:</p>
+		<p><code>@import "library/mixins/**/*";</code></p>
+		<p class="callout callout-info">Globbed files are sorted alphabetically before importing them and globs are always relative to the current file.</p>
+
+	</section>
+
+	<section id="example2" style="min-height: 147px;">
+
+		<h1>Compass</h1>
+		<hr>
+		<p>To use Globbing in Mixture with compass you just need to adjust the <code>compass/config.rb</code> in the root of your project and add the following line at the top of the file <code>require 'sass-globbing'</code></p>
+		<p>Once thats done the same logic applies as detailed above in Sass.</p>
+
+	</section>
+
+</div>
+{% endblock %}

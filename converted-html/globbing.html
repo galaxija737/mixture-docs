@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sass Globbing : Sass globbing, no setup required</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="public/css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <style>
+            body {
+                padding-top: 50px;
+                position: relative;
+            }
+        </style>
+        <!-- TODO: Complete this project :) -->
+    </head>
+    <body data-spy="scroll" data-target="#sidenav" data-offset="120">
+        <div class="navbar-header navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="index.html">Home</a></li>
+                <li ><a href="templates.html">Templates</a></li>
+                <li ><a href="models.html">Models</a></li>
+                <li ><a href="preprocessors.html">Preprocessors</a></li>
+                <li ><a href="optimise.html">Optimise</a></li>
+                <li ><a href="mixture.html">Mixture</a></li>
+                <li ><a href="services.html">Services</a></li>
+                <li ><a href="simple-mode.html">Simple mode</a></li>
+                <li ><a href="collections.html">Collections</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+        
+
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#example1">Sass</a></li>
+				<li><a href="#example2">Compass</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Sass Globbing<br><small>Sass globbing, no setup required</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+
+		<h4>Sass globbing allows you to import many Sass or Scss files in a single import statement. Mixture has support out of the box, no setup required.</h4>
+
+	</section>
+
+	<section id="example1">
+
+		<h1>Sass</h1>
+		<hr>
+		<p class="callout callout-info">We've updated how this works in the latest version of Mixture, you need to activate globbing in the Mixture settings as per the following example: </p><pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="str">"sass"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">  </span><span class="str">"globbing"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></li><li class="L2"><span class="pun">}</span></li></ol></pre><p></p>
+		<p class="callout callout-info">For a full list of the settings for Sass <a href="preprocessors.html#sass">please see the preprocessor section</a>.</p>
+		<p>Once activated you can start adding your import statements:</p>
+		<p>Import a folder of files:</p>
+		<p><code>@import "library/mixins/*";</code></p>
+		<p>If you have issues you can also try...</p>
+		<p><code>@import "library/mixins/**";</code></p>
+		<p>Import a tree of files:</p>
+		<p><code>@import "library/mixins/**/*";</code></p>
+		<p class="callout callout-info">Globbed files are sorted alphabetically before importing them and globs are always relative to the current file.</p>
+
+	</section>
+
+	<section id="example2" style="min-height: 147px;">
+
+		<h1>Compass</h1>
+		<hr>
+		<p>To use Globbing in Mixture with compass you just need to adjust the <code>compass/config.rb</code> in the root of your project and add the following line at the top of the file <code>require 'sass-globbing'</code></p>
+		<p>Once thats done the same logic applies as detailed above in Sass.</p>
+
+	</section>
+
+</div>
+
+
+        <!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

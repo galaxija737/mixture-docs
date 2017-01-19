@@ -1,0 +1,76 @@
+{% block title %}FTP : If you have your own hosting you can FTP your Mixture or Simple Mode project{% endblock %}
+{% block content %}
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li<a href="#intro">Introduction</a></li>
+				<li><a href="#mixture">Mixture</a></li>
+				<li><a href="#simple">Simple Mode</a></li>
+				<li><a href="#settings">Settings</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>FTP<br><small>If you have your own hosting you can FTP your Mixture or Simple Mode project</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+		<p class="callout callout-info">FTP settings have changed – you no longer add settings to the mixture settings file. Settings are now added to a file called <code>.ftpsettings</code> in the root of the project, please read on for more details.</p>
+
+		<h3>Mixture supports FTP for both Mixture and Simple mode projects. The following details the implementations and logic involved.</h3>
+
+	</section>
+
+	<section id="mixture">
+
+		<h1>Mixture Project</h1>
+		<hr>
+		<p>Mixture will FTP the "Convert to HTML" output to the remote location you set in the FTP settings within your projects mixture.json settings file.</p>
+		<p>Only files that have changed will be published and Mixture will not remove any files, but it will overwrite matching.</p>
+		<p>Any ignore settings in your mixture.json will also be ignored for FTP.</p>
+		<p class="callout callout-info">Unlike the Mixture publish for subscription users, the FTP option is purely static and some of the advanced features offered via published projects will not be available.</p>
+
+	</section>
+
+	<section id="simple">
+
+		<h1>Simple Mode Project</h1>
+		<hr>
+		<p>Mixture will FTP the whole working directory, excluding hidden files and folders and Mixture specific files to the remote location you set in the FTP settings within your projects mixture.json settings file.</p>
+		<p>Only files that have changed will be published and Mixture will not remove any files, but it will overwrite matching.</p>
+		<p>Any ignore settings in your mixture.json will also be ignored for FTP.</p>
+		<p class="callout callout-info">An example use case for Simple Mode and FTP would be a Wordpress site, we recommend you run Mixture on the themes or theme directory, when you FTP you should set the path to the themes or theme directory at the remote location - Mixture will then allow you to quickly publish changes to your live site.</p>
+
+	</section>
+
+	<section id="settings" style="min-height: 196px;">
+
+		<h1>Settings</h1>
+		<hr>
+		<p>Overview of settings:</p>
+		<ul>
+			<li><code>host</code> the hostname or ip address</li>
+			<li><code>port</code> the port (default is 21)</li>
+			<li><code>username</code> your username</li>
+			<li><code>password</code> your password</li>
+			<li><code>path</code> the remote path (default is the root)</li>
+			<li><code>secure</code> SSL / TSL support (true or false)</li>
+		</ul>
+		<p>Example settings (which should be added to a file called <code>.ftpsettings</code> in the root of the project):</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="pun">{</span></li><li class="L1"><span class="pln">  </span><span class="str">"host"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"ip/hostname"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"port"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">21</span><span class="pun">,</span></li><li class="L3"><span class="pln">  </span><span class="str">"username"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-username"</span><span class="pun">,</span></li><li class="L4"><span class="pln">  </span><span class="str">"password"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-password"</span><span class="pun">,</span></li><li class="L5"><span class="pln">  </span><span class="str">"path"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-remote-folder"</span><span class="pun">,</span></li><li class="L6"><span class="pln">  </span><span class="str">"secure"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
+
+	</section>
+
+</div>
+{% endblock %}

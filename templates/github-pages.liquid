@@ -1,0 +1,87 @@
+{% block title %}GitHub Pages : Push and host your project on GitHub pages.{% endblock %}
+{% block content %}
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#started">Getting Started</a></li>
+				<li><a href="#settings">Settings</a></li>
+				<li><a href="#push">Pushing</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>GitHub Pages<br><small>Push and host your project on GitHub pages.</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+		<p class="callout callout-info">GitHub pages settings have changed – you no longer add settings to the mixture settings file. Settings are now all added to a file called <code>.githubsettings</code> in the root of the project, please read on for more details.</p>
+		<!--<h3>Mixture supports GitHub Pages and the ability to push your converted project through Git. <a href="http://quick.as/4ru9lr">Watch a demonstration</a>.</h3>
+		<p class="callout callout-info">Please note that this is currently a BETA feature, we have tested as thoroughly as we can, but in the wild you may encounter issues - if so please log at <a href="http://support.mixture.io">http://support.mixture.io</a>.</p>-->
+
+	</section>
+
+	<section id="started">
+
+		<h1>Getting Started</h1>
+		<hr>
+		<p>Before you can push your project you will need a <a href="https://github.com/">GitHub account</a> and a repository you would like Mixture to publish to. You can use an existing repository or create a new (empty) one.</p>
+		<p class="callout callout-info">When Mixture publishes it will create (if it doesn't exist already) an orphaned branch. Please be aware that when Mixture pushes to this branch it will do a forced push - the branch is configurable.</p>
+
+	</section>
+
+	<section id="settings">
+
+		<h1>GitHub Settings</h1>
+		<hr>
+		<p>All settings should be added to <code>.githubsettings</code> file in the root of your project, example...</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="pun">{</span></li><li class="L1"><span class="pln">  </span><span class="str">"username"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-username"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"password"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-password"</span><span class="pun">,</span></li><li class="L3"><span class="pln">  </span><span class="str">"email"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-email"</span><span class="pun">,</span></li><li class="L4"><span class="pln">  </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"my-name"</span><span class="pun">,</span></li><li class="L5"><span class="pln">  </span><span class="str">"gitHubPages"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span></li><li class="L6"><span class="pln">  	</span><span class="str">"repoUrl"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"https://github.com/username/repo-name.git"</span><span class="pun">,</span></li><li class="L7"><span class="pln">  	</span><span class="str">"guid"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"self generating guid"</span><span class="pun">,</span></li><li class="L8"><span class="pln">  	</span><span class="str">"branch"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"gh-pages"</span></li><li class="L9"><span class="pln">  </span><span class="pun">}</span></li><li class="L0"><span class="pun">}</span></li></ol></pre>
+		<ul>
+			<li><code>username</code> GitHub Username.</li>
+			<li><code>password</code> GitHub Token (or password) *.</li>
+			<li><code>name</code> Your Name.</li>
+			<li><code>email</code> Your Email.</li>
+			<li><code>gitHubPages</code> github pages specific details, see below.</li>
+		</ul>
+		<p>gitHubPages elements:</p>
+		<ul>
+			<li><code>repoUrl</code> GitHub repository URL.</li>
+			<li><code>guid</code> An automatically generated unique identifier.</li>
+			<li><code>branch</code> default: gh-pages.</li>
+		</ul>
+		<p class="callout callout-info">* Username and Password are required, however we strongly recommend that you do not use your GitHub password - instead you can generate a Key from your <a href="https://github.com/settings/applications">GitHub account</a>. GitHub.com &gt; Settings &gt; Applications &gt; Personal Access Tokens &gt; Create a new token and then use this token in the password field.</p>
+		<p class="callout callout-info">As a precaution as soon as you enter your password and save the file Mixture will automatically update it with an encrypted version unique to the application and your account.</p>
+		<p>By adding the GitHub settings as a new standalone file it can be git ignored from your project if you are using Git, it's also useful if you are working in a team with the project.</p>
+
+	</section>
+
+	<section id="push" style="min-height: 196px;">
+
+		<h1>Pushing to GitHub Pages</h1>
+		<hr>
+		<p>Once all your settings are in place, it's very simple to publish to GitHub Pages with Mixture...</p>
+		<ul>
+			<li>Start / Open your project with Mixture</li>
+			<li>Select "Tools"</li>
+			<li>Select "Convert to HTML" (before you publish to GitHub pages remember to convert first - if there are changes to the project)</li>
+			<li>Select "GitHub Pages"</li>
+			<li>Relax. Mixture will push and inform you if any issues.</li>
+		</ul>
+		<p class="callout callout-info">Please note: It can take 10 minutes once published for GitHub to make your changes live on their URL.</p>
+
+	</section>
+
+</div>
+
+{% endblock %}

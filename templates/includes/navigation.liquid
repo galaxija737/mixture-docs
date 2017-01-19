@@ -1,0 +1,23 @@
+<div class="navbar-header navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li {% if mixture.url == "index" %}class="active"{% endif %}><a href="/">Home</a></li>
+                <li {% if mixture.url == "templates" %}class="active"{% endif %}><a href="/templates">Templates</a></li>
+                <li {% if mixture.url == "models" %}class="active"{% endif %}><a href="/models">Models</a></li>
+                <li {% if mixture.url == "preprocessors" %}class="active"{% endif %}><a href="/preprocessors">Preprocessors</a></li>
+                <li {% if mixture.url == "optimise" %}class="active"{% endif %}><a href="/optimise">Optimise</a></li>
+                <li {% if mixture.url == "mixture" %}class="active"{% endif %}><a href="/mixture">Mixture</a></li>
+                <li {% if mixture.url == "services" %}class="active"{% endif %}><a href="/services">Services</a></li>
+                <li {% if mixture.url == "simple-mode" %}class="active"{% endif %}><a href="/simple-mode">Simple mode</a></li>
+                <li {% if mixture.url == "collections" %}class="active"{% endif %}><a href="/collections">Collections</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

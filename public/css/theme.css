@@ -1,0 +1,42 @@
+.page-header {
+	margin-top: 30px;
+	padding-top: 40px;
+	padding-bottom: 50px;
+	background-color: #f9fbfd;
+	color: #333;
+	border-bottom: 3px solid #cceaff;
+	border-top: 3px solid #cceaff;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+
+    color: #555;
+    background-color: #f8f8f8;
+
+    box-shadow:inset 0px -2px 0px 0px #1DA9DE;
+}
+
+.navbar-secondary {
+	margin-top: 50px;
+	min-height: 30px;
+}
+
+.nav-secondary>li>a {
+	padding: 5px 10px;
+}
+
+.callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.callout-info {
+    border-left-color: #1b809e;
+}
+
+.callout-alert {
+    border-left-color: #e52325;
+}

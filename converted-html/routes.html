@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Routes : Custom routing and redirects in Mixture.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="public/css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <style>
+            body {
+                padding-top: 50px;
+                position: relative;
+            }
+        </style>
+        <!-- TODO: Complete this project :) -->
+    </head>
+    <body data-spy="scroll" data-target="#sidenav" data-offset="120">
+        <div class="navbar-header navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="index.html">Home</a></li>
+                <li ><a href="templates.html">Templates</a></li>
+                <li ><a href="models.html">Models</a></li>
+                <li ><a href="preprocessors.html">Preprocessors</a></li>
+                <li ><a href="optimise.html">Optimise</a></li>
+                <li ><a href="mixture.html">Mixture</a></li>
+                <li ><a href="services.html">Services</a></li>
+                <li ><a href="simple-mode.html">Simple mode</a></li>
+                <li ><a href="collections.html">Collections</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+        
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#example1">Details</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Routes<br><small>Custom routing and redirects in Mixture.</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+
+		<h4>Routing and the friendly URL's generated in Mixture are created by default from the structure and filename, but we have now added an additional routing feature to Mixture.</h4>
+
+	</section>
+
+	<section id="example1" style="min-height: 98px;">
+
+		<h1>Details</h1>
+		<hr>
+
+		<h4>Routes are managed via the mixture settings file, the following is simply an example to demonstrate some options...</h4>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="str">"routes"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span></li><li class="L1"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog/page-:page"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln"> </span><span class="pun">},</span></li><li class="L2"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog/:month/:year"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln"> </span><span class="pun">},</span></li><li class="L3"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"portfolio/:category"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"portfolio"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln"> </span><span class="pun">},</span></li><li class="L4"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"search"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://google.com"</span><span class="pln"> </span><span class="pun">},</span></li><li class="L5"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog/:article"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://blog.com/{article}"</span><span class="pln"> </span><span class="pun">},</span></li><li class="L6"><span class="pln">  </span><span class="pun">{</span><span class="pln"> </span><span class="str">"route"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"blog/:article/:page"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"template"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> </span><span class="str">"redirect"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"/articles/{article}/{page}"</span><span class="pln"> </span><span class="pun">}</span></li><li class="L7"><span class="pun">]</span></li></ol></pre>
+		<p>The order of routes is important as the first match will win.</p>
+		<p>You can set variables using <code>:variable</code> and they will become availble to the matching route template via the model like so <code></code></p>
+		<p>Redirects will report <code>301 Moved Permanently</code></p>
+
+	</section>
+
+</div>
+
+
+
+        <!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

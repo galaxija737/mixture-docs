@@ -1,0 +1,90 @@
+{% block title %}Compass Plugins : Use compass plugins with Mixture.{% endblock %}
+{% block content %}
+<div id="sidenav">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#example1">Example Susy</a></li>
+				<li><a href="#example2">Example Foundation</a></li>
+				<li><a href="#windows">Windows Screencast</a></li>
+				<li><a href="#mac">Mac Screencast</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<header id="header" class="page-header">
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Compass Plugins<br><small>Use compass plugins with Mixture.</small></h1>
+	</div>
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Welcome -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+
+		<h4>The recommended way to use custom plugins with compass is to point Mixture at <a href="/custom-ruby">your own Ruby install</a>. You can then install gems as required in the standard way.</h4>
+
+	</section>
+
+	<section id="example1">
+
+		<h1>Example: Installing <a href="http://susy.oddbird.net/">Susy</a></h1>
+		<hr>
+
+		<h4>The following example details how to install the Susy compass plugin.</h4>
+		<ul>
+			<li>If you are already knowledgable in Ruby and have it installed on your machine you can gem install these frameworks and then link them manually in the Mixture <code>compass/config.rb</code> in the root of your project.</li>
+			<li>If you don't have Ruby installed you'll need to do this first, please refer to the screencasts below.</li>
+			<li>Once the gems are installed you will need to find them on your system (see screencasts for examples of this) and grab the absolute path.</li>
+			<li>Once you have the path add it to the config.rb as a require, example: <code>require '/Ruby200/lib/ruby/gems/2.0.0/gems/susy-1.0.7/lib/susy.rb'</code></li>
+			<li>Thats it, you can now call and use Susy from your Sass files.</li>
+		</ul>
+		<p class="callout callout-info">You can also avoid using gems if you wish by downloading the Susy sass files to your project and simply importing them like any other sass file.</p>
+		<p class="callout callout-info">Please make sure you switch out the paths in the examples for your own.</p>
+
+	</section>
+
+	<section id="example2">
+
+		<h1>Example: Installing <a href="http://foundation.zurb.com/">ZURB Foundation</a></h1>
+		<hr>
+
+		<h4>The following example details how to install the ZURB Foundation compass plugin.</h4>
+		<ul>
+			<li>If you are already knowledgable in Ruby and have it installed on your machine you can gem install these frameworks and then link them manually in the Mixture <code>compass/config.rb</code> in the root of your project.</li>
+			<li>If you don't have Ruby installed you'll need to do this first, please refer to the screencasts below.</li>
+			<li>Once the gems are installed you will need to find them on your system (see screencasts for examples of this) and grab the absolute path.</li>
+			<li>Once you have the path add it to the config.rb as a require, example: <code>require '/Ruby200/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.0.9/lib/zurb-foundation.rb'</code></li>
+			<li>Open up zurb-foundation.rb within it's gem folder and change the path to version.rb to an absolute path, example <code>/Ruby200/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.0.9/lib/foundation/version.rb</code></li>
+			<li>If you now cd into your project directory and then into the compass directory.</li>
+			<li>Please make sure the config.rb is setup correctly and then run <code>compass install foundation</code>, this should add all necessary files.</li>
+			<li>If you then open the project in Mixture and click view locally, and then update the url to <code>/index.html</code> you will see an example of styles and more.</li>
+			<li>You should now be up and running.</li>
+		</ul>
+		<p class="callout callout-info">Please make sure you switch out the paths in the examples for your own.</p>
+
+	</section>
+
+	<section id="windows">
+
+		<h1>Screencast for Windows</h1>
+		<hr>
+		<p><iframe width="640" height="360" src="http://www.youtube.com/embed/UeSlDeRH65M" frameborder="0" allowfullscreen></iframe></p>
+
+	</section>
+
+	<section id="mac">
+
+		<h1>Screencast for Mac</h1>
+		<hr>
+		<p><iframe width="640" height="480" src="http://www.youtube.com/embed/sLsloGWZUN4" frameborder="0" allowfullscreen></iframe></p>
+
+	</section>
+</div>
+{% endblock %}

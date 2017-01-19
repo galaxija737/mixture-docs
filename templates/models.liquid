@@ -1,0 +1,156 @@
+{% block title %}Models : A super simple data / model system.{% endblock %}
+{% block content %}
+
+<div id="sidenav">
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#mixture">Mixture model</a></li>
+				<li><a href="#request">Request model</a></li>
+				<li><a href="#global">Custom global model</a></li>
+				<li><a href="#custom">Custom page model</a></li>
+				<li><a href="#online1">Re-use models</a></li>
+				<li><a href="#online2">Online models</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</div>
+
+<header id="header" class="page-header">
+
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Models<br><small>A super simple data / model system.</small></h1>
+	</div>
+
+</header>
+
+<div id="page" class="container">
+
+	<!-- Section: Introduction -->
+	<section id="intro">
+
+		<h2>Introduction</h2>
+		<hr>
+
+		<h4>Mixture has an in-built global model which exposes useful data to every template. You can also create your own custom <a href="http://en.wikipedia.org/wiki/JSON">JSON</a> models which are automatically consumed by their namesake template or your own custom global model available to every page, layout and include.</h4>
+
+	</section>
+
+	<!-- Section: Mixture -->
+	<section id="mixture">
+
+		<h2>Mixture model</h2>
+		<hr>
+
+		<p>Mixture's global model can be accessed via the <code>mixture</code> namespace and exposes the following data:</p>
+		<ul>
+			<li><code>url</code> the currently viewed template url</li>
+			<li><code>debug</code> a boolean value based upon the Mixture settings debug value (see example usage below)</li>
+			<li><code>project_description</code> the project description as defined in the Mixture <a href="/mixture#settings">settings</a> file.</li>
+			<li><code>project_name</code> the project name as defined in the Mixture <a href="/mixture#settings">settings</a> file.</li>
+			<li><code>sitemap</code> an auto generated sitemap based on the template directory, <a href="/sitemap">please see the sitemap section</a>.</li>
+		</ul>
+
+		<p>You can access the Mixture model from any template, layout or include.</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="pun">&#123;&#123;</span><span class="pln"> mixture</span><span class="pun">.</span><span class="pln">url </span><span class="pun">&#125;&#125;</span></li></ol></pre>
+
+		<p>Example adding a class based on the Mixture model and current template:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="1"><ol class="linenums"><li class="L0"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"/about"</span><span class="pln"> &#123;% </span><span class="atn">if</span><span class="pln"> </span><span class="atn">mixture</span><span class="pln">.</span><span class="atn">url</span><span class="pln"> </span><span class="atv">=</span><span class="pun">=</span><span class="pln"> </span><span class="atv">"about"</span><span class="pln"> %&#125;</span><span class="atn">class</span><span class="pun">=</span><span class="atv">"selected"</span><span class="pln">&#123;% </span><span class="atn">endif</span><span class="pln"> %&#125;</span><span class="tag">&gt;</span><span class="pln">About</span><span class="tag">&lt;/a&gt;</span></li></ol></pre>
+
+		<p>Example using the debug value within a liquid page:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="2"><ol class="linenums"><li class="L0"><span class="pun">&#123;%</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> mixture</span><span class="pun">.</span><span class="pln">debug </span><span class="pun">%&#125;&lt;</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">I am </span><span class="kwd">in</span><span class="pln"> debug mode</span><span class="pun">!&lt;/</span><span class="pln">p</span><span class="pun">&gt;&#123;%</span><span class="pln"> endif </span><span class="pun">%&#125;</span></li></ol></pre>
+
+	</section>
+
+	<!-- Section: Request -->
+	<section id="request">
+
+		<h2>Request model</h2>
+		<hr>
+
+		<p>Mixture's request model can be accessed via the <code>request</code> namespace and exposes the following data:</p>
+		<ul>
+			<li><code>form</code> will contain any posted Form elements.</li>
+			<li><code>query</code> will contain any Query string elements.</li>
+		</ul>
+		<p>You can access the request model when available from any template, layout or include.</p>
+		<p>Example accessing a Query string from the url <code>/about?firstName=neil&amp;lastName=kinnish</code>:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="3"><ol class="linenums"><li class="L0"><span class="pun">&#123;&#123;</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">query</span><span class="pun">.</span><span class="pln">firstName </span><span class="pun">&#125;&#125;</span><span class="pln"> </span><span class="pun">&#123;&#123;</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">query</span><span class="pun">.</span><span class="pln">lastName </span><span class="pun">&#125;&#125;</span></li></ol></pre>
+
+		<p>Example accessing posted Form input elements (name &amp; message):</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="4"><ol class="linenums"><li class="L0"><span class="pun">&#123;&#123;</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">.</span><span class="pln">name </span><span class="pun">&#125;&#125;</span><span class="pln"> </span><span class="pun">&#123;&#123;</span><span class="pln"> request</span><span class="pun">.</span><span class="pln">form</span><span class="pun">.</span><span class="pln">message </span><span class="pun">&#125;&#125;</span></li></ol></pre>
+
+		<p class="callout callout-info">The request model is <u>not</u> supported in Haml</p>
+
+	</section>
+
+	<!-- Section: Global -->
+	<section id="global">
+
+		<h2>Custom global model</h2>
+		<hr>
+
+		<p>You can create a custom global model which will be available to every page, layout and include. This model when available can be accessed via the <code>global</code> namespace.</p>
+		<p>To create a custom model simply create <code>_global.json</code> and drop into the root of the <code>models</code> folder in your project.</p>
+		<p>An example file:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="5"><ol class="linenums"><li class="L0"><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  </span><span class="str">"example"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"test data"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"ThisIsAnExample"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></li><li class="L3"><span class="pun">&#125;</span></li></ol></pre>
+
+		<p>Using this data from a page, layout or include:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="6"><ol class="linenums"><li class="L0"><span class="pun">&#123;&#123;</span><span class="pln"> </span><span class="kwd">global</span><span class="pun">.</span><span class="pln">example </span><span class="pun">&#125;&#125;</span></li></ol></pre>
+
+	</section>
+
+	<!-- Section: Custom -->
+	<section id="custom">
+
+		<h2>Custom page model</h2>
+		<hr>
+
+		<p>This model when available can be accessed via the <code>model</code> namespace.</p>
+		<p>Creating a model is quick and easy, you simply create a new JSON file in the models folder. The following example illustrates creating the model <code>about.json</code></p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="7"><ol class="linenums"><li class="L0"><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  </span><span class="str">"title"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"About us"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"team"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span></li><li class="L3"><span class="pln">    </span><span class="pun">&#123;</span></li><li class="L4"><span class="pln">      </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Neil Kinnish"</span><span class="pun">,</span></li><li class="L5"><span class="pln">      </span><span class="str">"twitter"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"neiltak"</span></li><li class="L6"><span class="pln">    </span><span class="pun">&#125;,</span></li><li class="L7"><span class="pln">    </span><span class="pun">&#123;</span></li><li class="L8"><span class="pln">      </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Pete Nelson"</span><span class="pun">,</span></li><li class="L9"><span class="pln">      </span><span class="str">"twitter"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"petetak"</span></li><li class="L0"><span class="pln">    </span><span class="pun">&#125;,</span></li><li class="L1"><span class="pln">    </span><span class="pun">&#123;</span></li><li class="L2"><span class="pln">      </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Mike Kus"</span><span class="pun">,</span></li><li class="L3"><span class="pln">      </span><span class="str">"twitter"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"mikekus"</span></li><li class="L4"><span class="pln">    </span><span class="pun">&#125;</span></li><li class="L5"><span class="pln">  </span><span class="pun">]</span></li><li class="L6"><span class="pun">&#125;</span></li></ol></pre>
+
+		<p>The example below illustrates how you might use this model within the template <code>about.liquid</code>, models are consumed automatically by templates with matching names and exposed to the template, it's layout and includes:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="8"><ol class="linenums"><li class="L0"><span class="tag">&lt;h1&gt;</span><span class="pln">&#123;&#123; model.title &#125;&#125;</span><span class="tag">&lt;/h1&gt;</span></li><li class="L1"><span class="tag">&lt;p&gt;</span><span class="pln">A list of our team members</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="tag">&lt;ol&gt;</span></li><li class="L3"><span class="pln">  &#123;% for item in model.team %&#125;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;li&gt;</span><span class="pln">&#123;&#123; item.name &#125;&#125; and his Twitter handle &#123;&#123; item.twitter &#125;&#125;</span><span class="tag">&lt;/li&gt;</span></li><li class="L5"><span class="pln">  &#123;% endfor %&#125;</span></li><li class="L6"><span class="tag">&lt;/ol&gt;</span></li></ol></pre>
+		<p class="callout callout-info">Note: if your template is in a sub-folder structure then the model should also be placed in a matching structure within the models folder.</p>
+
+	</section>
+
+	<section id="online1">
+
+		<h2>Re-use a model on any page</h2>
+		<hr>
+
+		<p>You can use any existing model from any page:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="9"><ol class="linenums"><li class="L0"><span class="pln">&nbsp;</span></li></ol></pre>
+
+		<p class="callout callout-info">You can add this to any page (not includes or layouts) and that will tell Mixture to load that model from the model directory.</p>
+		<p class="callout callout-info">The feature is <u>not</u> supported in Haml</p>
+
+	</section>
+
+	<section id="online2" style="min-height: 343px;">
+
+		<h2>Online Models</h2>
+		<hr>
+
+		<p>If you would like to use online models, you have a couple of options. Firstly you can tell mixture to look online for all models rather than the model directory. To do this you simply need to update the settings file "modelSource". Example...</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="10"><ol class="linenums"><li class="L0"><span class="str">"modelSource"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://online-service.com"</span></li></ol></pre>
+
+		<p class="callout callout-info">Mixture will automatically default <code>.json</code> and look for a model matching the page name and location, here's a quick screencast of this functionality.</p>
+		<p><iframe width="640" height="360" src="http://www.youtube.com/embed/RpEdeQapjjk" frameborder="0" allowfullscreen=""></iframe></p>
+
+		<h3>You can also call an online model from a page...</h3>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="11"><ol class="linenums"><li class="L0"><span class="pln">&nbsp;</span></li></ol></pre>
+
+		<p class="callout callout-info">Only JSON models are accepted.</p>
+		<p class="callout callout-info">HAML only supports this feature locally</p>
+
+	</section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,211 @@
+{% block title %}Preprocessors : Automatic compilation of Sass, Less, Stylus, CoffeeScript and More.{% endblock %}
+{% block content %}
+
+<div id="sidenav">
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li><a href="#intro">Introduction</a></li>
+				<li><a href="#locations">Locations</a></li>
+				<li><a href="#assets">Stylesheet Assets</a></li>
+				<li><a href="#sass">Sass (ruby)</a></li>
+				<li><a href="#libsass">Sass (libsass)</a></li>
+				<li><a href="#compass">Compass + Sass</a></li>
+				<li><a href="#less">Less</a></li>
+				<li><a href="#coffee">CoffeeScript</a></li>
+				<li><a href="#stylus">Stylus</a></li>
+				<li><a href="#mix">Mix</a></li>
+				<li><a href="#base">Base64</a></li>
+				<li><a href="#autoprefix">Autoprefix</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</div>
+
+<header id="header" class="page-header">
+
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Preprocessors<br><small>Automatic compilation of Sass, Less, Stylus, CoffeeScript and More.</small></h1>
+	</div>
+
+</header>
+
+<div id="page" class="container">
+	<!-- Section: Introduction -->
+	<section id="intro">
+
+		<h2>Introduction</h2>
+		<hr>
+		<h4>Mixture handles compilation automatically for Sass, Less, Stylus and CoffeeScript. We've also introduced our own type "Mix" which simply extends the functionality of standard script and style files, allowing you to combine in a similar way to using the import functions of Sass or Less.</h4>
+
+	</section>
+
+	<!-- Section: Locations -->
+	<section id="locations">
+
+		<h2>Locations</h2>
+		<hr>
+		<h4>Mixture will only preprocess files within your project if they are defined within the "preprocessorLocations" setting.</h4>
+		<p>Please see the <a href="/mixture#settings">Mixture</a> section and settings.</p>
+
+	</section>
+
+	<!-- Section: Assets -->
+	<section id="assets">
+
+		<h2>Stylesheet Assets</h2>
+		<hr>
+
+		<h4>Referencing assets from a stylesheet (css, less, sass, styl)</h4>
+		<p>We recommened using relative paths</p>
+		<p>Example: <code>../images/my-image.jpg</code></p>
+		<p class="callout callout-info">Mixture will attempt to update absolute paths when converting to HTML or Publishing.</p>
+		<p class="callout callout-info">If using Compass you can adjust the "compass/config.rb" so as all generated paths are relative.</p>
+
+	</section>
+
+	<!-- Section: Sass -->
+	<section id="sass">
+
+		<h2>Sass (Ruby)</h2>
+		<hr>
+
+		<h4>Sass files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h4>
+		<p class="callout callout-info">The Ruby implementation of Sass is the default in Mixture, but you change to "libsass" as detailed below by updating the Sass settings in the Mixture Json settings file. We will eventually default to the "libsass" version.</p>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Sass file is: <code>.sass</code> or <code>.scss</code>.</p>
+		<p class="callout callout-info">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.scss</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Sass / Scss you do not need to enter "_" or the extension eg <code>@import "myfile";</code></p>
+
+		<h3>Sass settings</h3>
+		<p>You can adjust the Sass settings via the Mixture settings file, please be aware that these settings do not affect compass (please see the compass section below which explains how compass is managed).</p>
+		<p>Example settings:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="0"><ol class="linenums"><li class="L0"><span class="str">"sass"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  </span><span class="str">"outputStyle"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"nested"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"sourceMap"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L3"><span class="pln">  </span><span class="str">"cache"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L4"><span class="pln">  </span><span class="str">"lineNumbers"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L5"><span class="pln">  </span><span class="str">"debugInfo"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L6"><span class="pln">  </span><span class="str">"globbing"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L7"><span class="pln">  </span><span class="str">"useLibSass"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span></li><li class="L8"><span class="pun">&#125;</span></li></ol></pre>
+		<p class="callout callout-info">Mixture currently implements version 3.4.9, you can view more on Sass at <a href="http://sass-lang.com/">http://sass-lang.com</a>. You can use any version of Sass / Gems &amp; Plugins with Mixture by pointing Mixture at your own Ruby install: <a href="/custom-ruby">Read more on setting up Mixture with a custom Ruby install</a>.</p>
+		<p class="callout callout-info">Mixture supports <a href="/globbing">Sass Globbing</a> but currently only in the non-libsass version.</p>
+
+	</section>
+
+	<!-- Section: Sass -->
+	<section id="libsass">
+
+		<h2>Sass (libsass)</h2>
+		<hr>
+
+		<h4>Sass files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h4>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Sass file is: <code>.sass</code> or <code>.scss</code>.</p>
+		<p class="callout callout-info">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.scss</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Sass / Scss you do not need to enter "_" or the extension eg <code>@import "myfile";</code></p>
+
+		<h3>Sass settings</h3>
+		<p>You can adjust the Sass settings via the Mixture settings file, please be aware that these settings do not affect compass (please see the compass section below which explains how compass is managed).</p>
+		<p>Example settings:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="1"><ol class="linenums"><li class="L0"><span class="str">"sass"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  </span><span class="str">"outputStyle"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"nested"</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"sourceMap"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L3"><span class="pln">  </span><span class="str">"lineNumbers"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L4"><span class="pln">  </span><span class="str">"useLibSass"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span></li><li class="L5"><span class="pun">&#125;</span></li></ol></pre>
+		<p class="callout callout-info">Please note: when using source maps in Mixture you should also turn on "debug" in the Mixture settings file - this stops Mixture from attempting to always load the minified js or css file which would not contain the sourcemap information.</p>
+
+	</section>
+	<!-- Section: Compass -->
+	<section id="compass">
+
+		<h2>Compass + Sass</h2>
+		<hr>
+
+		<h4>If you wish to use Compass to manage your Sass files you can!</h4>
+		<p>Simply update the setting <code>useCompass</code> to true, this will stop Mixture handling Sass and allow Compass to take over, Mixture will still display validation warnings.</p>
+		<p>When Compass is activated on a project a compass config file <code>.compass/config.rb</code> will be created in the root of your project and you will be notified to make some quick adjustments which will tell Compass about your project. Please open the file and follow the comments.</p>
+		<p class="callout callout-info">Mixture currently implements version 1.0.1. Learn more about Compass at <a href="http://compass-style.org/">http://compass-style.org/</a></p>
+		<p class="callout callout-info">SourceMap can be activated in the config.rb file - please refer to the compass docs.</p>
+
+		<h3>Plugins</h3>
+		<p class="callout callout-info">You can install and use compass plugins &amp; frameworks with Mixture. We have put together some <a href="/compass-plugins">documentation</a> on getting started.</p>
+		<p class="callout callout-info">Mixture supports <a href="/globbing">Sass Globbing</a>.</p>
+
+	</section>
+
+	<!-- Section: Global -->
+	<section id="less">
+
+		<h2>Less</h2>
+		<hr>
+
+		<h4>Less files are automatically handled by Mixture. Imports are automatically detected and only the parent file is compiled.</h4>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Less file is: <code>.less</code>.</p>
+		<p class="callout callout-info">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.less</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Less you do not need to enter the extension eg <code>@import "_myfile";</code></p>
+		<p class="callout callout-info">Mixture currently implements version 2.1.1 Learn more about Less at <a href="http://lesscss.org/">http://lesscss.org/</a></p>
+
+		<h3>Less settings</h3>
+		<p>You can adjust the Less settings via the Mixture settings file.</p>
+		<p>Example settings:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="2"><ol class="linenums"><li class="L0"><span class="str">"less"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  </span><span class="str">"sourceMap"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span></li><li class="L2"><span class="pln">  </span><span class="str">"lineNumbers"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span></li><li class="L3"><span class="pun">&#125;</span></li></ol></pre>
+		<p></p>
+		<p class="callout callout-info">Please note: when using source maps in Mixture you should also turn on "debug" in the Mixture settings file - this stops Mixture from attempting to always load the minified js or css file which would not contain the sourcemap information.</p>
+
+	</section>
+
+	<!-- Section: CoffeeScript -->
+	<section id="coffee">
+
+		<h2>CoffeeScript</h2>
+		<hr>
+
+		<h4>CoffeeScript files are automatically handled by Mixture.</h4>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorScriptOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a CoffeeScript file is: <code>.coffee</code>.</p>
+		<p>If you would like your coffeescript files compiled "bare" you can do so by adding <code>.bare.</code> to the original file name. The word bare will be stripped from the output file.</p>
+		<p class="callout callout-info">Mixture currently implements version 1.8.0. Learn more about CoffeeScript at <a href="http://coffeescript.org/">http://coffeescript.org/</a></p>
+
+	</section>
+
+	<!-- Section: Stylus -->
+	<section id="stylus">
+
+	 	<h2>Stylus</h2>
+		<hr>
+
+		<h4>Stylus files are automatically handled by Mixture.</h4>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>. A minified version of the file will also be output with <code>.min.</code> appended to the name. The extension that indicates a Stylus file is: <code>.styl</code>.</p>
+		<p class="callout callout-info">A note about Imports &amp; Partials:<br><br>Mixture will not compile partials, a partial is denoated by an underscore at the beginning eg <code>_myfile.styl</code>.<br><br>If you import a file which is <strong>not</strong> a partial Mixture will automatically work out the dependancy and only compile the parent file, however if a file is added without a parent then the file will be compiled.<br><br>When calling a partial in Stylus you do not need to enter the extension eg <code>@import "_myfile";</code></p>
+		<p class="callout callout-info">Mixture currently implements version 0.49.3. Learn more about Stylus at <a href="http://learnboost.github.com/stylus">http://learnboost.github.com/stylus</a></p>
+
+	</section>
+
+	<!-- Section: Mix -->
+	<section id="mix">
+
+		<h2>Mix (a custom Mixture type)</h2>
+		<hr>
+		<p>Mix files are simply <code>.js</code> or <code>.css</code> files with <code>.mix.</code> in the file name. A mix file simply extends the functionality of a normal style or script file and allows you to import and combine.</p>
+		<p>You can control the location of the output files via the Mixture <a href="/mixture#settings">settings</a> file and <code>preprocessorStyleOutput</code>.</p>
+		<p>A minified version will also be output with <code>.min.</code> appended to the name.</p>
+		<p>Example <code>style.mix.css</code>:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="3"><ol class="linenums"><li class="L0"><span class="lit">@import</span><span class="pln"> </span><span class="str">"another-style-file"</span><span class="pun">;</span></li><li class="L1"><span class="lit">@import</span><span class="pln"> </span><span class="str">"common/reset"</span><span class="pun">;</span></li><li class="L2"><span class="lit">@import</span><span class="pln"> </span><span class="str">"common/clearfix.css"</span><span class="pun">;</span></li></ol></pre>
+		<p>The above will combine all 3 files into the output file <code>style.css</code>, a minifed version will also be created.</p>
+		<p class="callout callout-info">Note: If you do not add the extension eg <code>@import "style"</code> Mixture will look for the file <code>_style.css</code>.</p>
+		<p>Script files work in the same way and have their own setting <code>preprocessorScriptOutput</code>.</p>
+		<p class="callout callout-info">We recommend you use ; to terminate the import as shown above.</p>
+
+	</section>
+
+	<section id="base">
+
+		<h2>Base64 Automatically</h2>
+		<hr>
+		<p>Mixture can convert stylesheet asset paths to inline base64, this logic can be used by files with the following extensions <code>css, less, sass, scss, styl</code>. <a href="http://quick.as/qligpe">Watch a demonstration</a>.</p>
+		<p>Example:</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="4"><ol class="linenums"><li class="L0"><span class="pun">.</span><span class="kwd">my</span><span class="pun">-</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  background</span><span class="pun">-</span><span class="pln">image</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">inline</span><span class="pun">-</span><span class="pln">image</span><span class="pun">(</span><span class="str">'../img/myimage.png'</span><span class="pun">);</span></li><li class="L2"><span class="pln">  background</span><span class="pun">-</span><span class="pln">repeat</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">repeat</span><span class="pun">;</span></li><li class="L3"><span class="pun">&#125;</span></li></ol></pre>
+		<p>If the image is found then the above will automatically be converted like so (example):</p>
+		<pre class="prettyprint linenums pad" data-initialized="true" data-gclp-id="5"><ol class="linenums"><li class="L0"><span class="pun">.</span><span class="kwd">my</span><span class="pun">-</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">&#123;</span></li><li class="L1"><span class="pln">  background</span><span class="pun">-</span><span class="pln">image</span><span class="pun">:</span><span class="pln"> url</span><span class="pun">(</span><span class="pln">data</span><span class="pun">:</span><span class="pln">image</span><span class="pun">/</span><span class="pln">png</span><span class="pun">;</span><span class="pln">base64</span><span class="pun">,</span><span class="pln">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5</span><span class="pun">...);</span></li><li class="L2"><span class="pln">  background</span><span class="pun">-</span><span class="pln">repeat</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">repeat</span><span class="pun">;</span></li><li class="L3"><span class="pun">&#125;</span></li></ol></pre>
+		<p class="callout callout-info">If you are using Compass then this will be handled via Compass instead of Mixture.</p>
+
+	</section>
+
+	<!-- Section: Online -->
+	<section id="autoprefix" style="min-height: 588px;">
+
+		<h2>Autoprefix</h2>
+		<hr>
+
+		<h4>Mixture has support for Autoprefixer, please see the <a href="/autoprefix">Autoprefix section</a>.</h4>
+
+	</section>
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% block title %}Simple Mode : It's not all about Mixture projects you can use Mixture with any type project...{% endblock %}
+{% block content %}
+
+<div id="sidenav">
+
+	<nav class="navbar navbar-default navbar-fixed-top navbar-secondary">
+		<div class="container">
+			<ul class="nav navbar-nav nav-secondary">
+				<li class="selected"><a href="#intro">Introduction</a></li>
+				<li><a href="#server">Server</a></li>
+				<li><a href="#preprocessors">Preprocessors</a></li>
+				<li><a href="#minification">Minification</a></li>
+				<li><a href="#optimisation">Optimisation</a></li>
+				<li><a href="#live">Live / Multi-device</a></li>
+				<li><a href="#todos">To-dos</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</div>
+
+<header id="header" class="page-header">
+
+	<div class="container">
+		<!-- Header block child page -->
+		<h1>Simple Mode<br><small>It's not all about Mixture projects you can use Mixture with any type project...</small></h1>
+	</div>
+
+</header>
+
+<div id="page" class="container">
+	<!-- Section: Introduction -->
+	<section id="intro">
+
+		<h1>Introduction</h1>
+		<hr>
+
+		<h4>Mixture can also work on non-mixture projects to aid your development, we've called this "simple" mode.<br>Mixture works in partnership with the server for that environment (mamp, wamp, etc) and super-charges it with Mixture features.<br>This page details the features that are available.</h4>
+		<p>Demonstration screencasts:</p>
+		<ul>
+			<li>Using Mixture with any type of project in Simple mode: <a href="http://quick.as/7rhon5">Mixture + Wamp demo (Windows)</a>.</li>
+			<li>Using Mixture with any type of project in Simple mode: <a href="http://quick.as/bns46x">Mixture + Mamp demo (Mac)</a>.</li>
+		</ul>
+		<p class="callout callout-info">You can setup a simple mode project to work with a partner server (mamp, wamp, rails, etc), if you don't set a partner sever Mixture will boot it's own simple server so as you can view local html files and assets.</p>
+
+	</section>
+
+	<!-- Section: Server -->
+	<section id="server">
+
+		<h1>Server</h1>
+		<hr>
+		<p>Mixture projects have access to a builtin server and the features this offers.</p><p>Simple mode projects (not using the "simpleModePartnerServer" setting) have access to a lightweight version of this server allowing you to view and parse local assets and html files or alternatively you can tell Mixture about another server the project uses (such as mamp, wamp, rails, etc) and Mixture will partner with that server and enable the live refresh, style injection and multi-device capability automatically.</p>
+		<p class="callout callout-info">If you encounter issues starting the server from "view locally" or it is greyed out, please visit our <a href="http://support.mixture.io/">support site and knowldege base</a>.</p>
+
+	</section>
+
+	<!-- Section: Preprocessors -->
+	<section id="preprocessors">
+
+		<h1>Preprocessors</h1>
+		<hr>
+		<p>Mixture will handle compilation automatically for Sass, Less, Stylus and CoffeeScript. We've also introduced our own type "Mix" which simply extends the functionality of standard script and style files, allowing you to combine in a similar way to using the import functions of Sass or Less.</p>
+		<p>For the full lowdown on this please view the <a href="/preprocessors">Preprocessors</a> page.</p>
+
+	</section>
+
+	<!-- Section: Minification -->
+	<section id="minification">
+
+		<h1>Minification</h1>
+		<hr>
+		<p>By default Mixture will create minified versions of all scripts and stylesheets.</p>
+		<p>For the full lowdown on this please view the <a href="/optimise">Optimisation</a> page.</p>
+
+	</section>
+
+	<!-- Section: Optimisation -->
+	<section id="optimisation">
+
+		<h1>Optimisation</h1>
+		<hr>
+		<p>Mixture will automatically optimise &amp; compress images added to the project by default (currently this works against Jpeg, Jpg, Gif and Png file types).</p>
+		<p>For the full lowdown on this please view the <a href="/optimise">Optimisation</a> page.</p>
+
+	</section>
+
+	<!-- Section: Live -->
+	<section id="live">
+
+		<h1>Live Refresh / Multi-device testing</h1>
+		<hr>
+		<p>Mixture will automatically reload or style inject when it detects changes in your project. This feature will work on most browsers and devices and is perfect for multi-device testing.</p>
+		<p>For this feature to work in simple mode you have two options</p>
+		<p>1. Tell Mixture the location of your server (rails, mamp, .net, etc...). You can do this by editing <code>simpleModePartnerServer</code> within the <code>mixture.json</code> file eg. <code>"simpleModePartnerServer": "http://localhost:8000"</code></p>
+		<p>2. Leave "simpleModePartnerServer" null and let Mixture boot up a lightweight version of it's own server so as you can use with static html files and assets.</p>
+		<p>For more information on live refresh please see the <a href="/mixture#live">Mixture</a> section. For more information on adjusting settings, please see the <a href="/mixture#settings">Settings</a> section.</p>
+		<p class="callout callout-info">Mac users: If you are using Mixture and pointing at a server that runs on a custom hostname and ends with .local or .dev this can sometimes cause a slowdown and is a known issue with OSX since lion. We are looking at workarounds, but if you use localhost or a different name it will be fast again!</p>
+
+	</section>
+
+	<!-- Section: To-dos -->
+	<section id="todos" style="min-height: 343px;">
+
+		<h1>Smart To-dos</h1>
+		<hr>
+		<p>A unique feature of Mixture is the ability to add to-dos in your code, to-dos are essentially comments that Mixture will find and list for easy access.</p>
+		<p>For the full lowdown on this please view the <a href="/mixture#to-dos">Mixture</a> page.</p>
+
+	</section>
+</div>
+{% endblock %}
